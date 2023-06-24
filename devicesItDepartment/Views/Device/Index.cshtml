@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Device>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Devices</h1>
+<a asp-action="Create" asp-controller="Device" class="btn btn-success"> New </a>
+
+<table class="table">
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Acquisition Date</th>
+        <th>Memo</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Id</th>
+            <td>@item.Name</td>
+            <td>@item.Category.Name</td>
+            <td>@item.AcuisitionDate.ToString("d")</td>
+            <td>@item.Memo</td>
+               <td>
+                        <a asp-action="Edit" asp-controller="Device"
+            class="btn btn-primary">تعديل</a>
+            </td>
+
+            <td>
+                        <form asp-action="Delete" asp-controller="Device" method="post">
+            <input type="hidden" name="id"  />
+            <button type="submit" class="btn btn-danger">حذف</button>
+
+            </form>
+            </td>
+            </tr>
+    }
+</table>
+

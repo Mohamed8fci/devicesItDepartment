@@ -1,0 +1,44 @@
+﻿@model devicesItDepartment.Models.Device
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Device</h1>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AcuisitionDate" class="control-label">Acquisition Date</label>
+        <input asp-for="AcuisitionDate" class="form-control" />
+        <span asp-validation-for="AcuisitionDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Memo" class="control-label">Memo</label>
+        <textarea asp-for="Memo" class="form-control"></textarea>
+        <span asp-validation-for="Memo" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category" class="control-label">Category</label>
+        <select asp-for="Category.Id" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))" class="form-control">
+            <option value="">Select a category</option>
+        </select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,31 @@
+﻿@model devicesItDepartment.Models.Device
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Device</h1>
+
+<h3>Are you sure you want to delete this device?</h3>
+<div>
+    <h4>Device</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd>@Model.Name</dd>
+        <dt>Acquisition Date</dt>
+        <dd>@Model.AcuisitionDate.ToString("d")</dd>
+        <dt>Memo</dt>
+        <dd>@Model.Memo</dd>
+        <dt>Category</dt>
+        <dd>@Model.Category.Name</dd>
+    </dl>
+</div>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Cancel</a>
+    </div>
+</form>
